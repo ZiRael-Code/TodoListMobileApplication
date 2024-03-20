@@ -15,29 +15,20 @@ ProgressBar progressBar;
         setContentView(R.layout.activity_main);
 
     }
+
     public void signUpPage(View view){
         progressBar = findViewById(R.id.progressBar);
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        try {
-            Thread.sleep(1000);
             progressBar.setVisibility(View.VISIBLE);
             startActivity(intent);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+
     }
 
     public void loginPage(View view){
         progressBar = findViewById(R.id.progressBar);
         Intent intent = new Intent(MainActivity.this, SignUpActivity1.class);
-        try {
-            Thread.sleep(1000);
             progressBar.setVisibility(View.VISIBLE);
             startActivity(intent);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
     }
 
 }
