@@ -6,7 +6,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SignUpActivity1 extends AppCompatActivity {
-private final MainActivity mainActivity;
+private MainActivity mainActivity;
 
     public SignUpActivity1(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
