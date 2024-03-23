@@ -95,13 +95,19 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/submit"
             android:layout_width="107dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="90dp"
             android:text="Login
 "
             android:textStyle="bold" />
+
+        <ProgressBar
+            android:id="@+id/loginProgress"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,23 +45,23 @@
             android:textSize="16sp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/loginPage"
             android:layout_width="230dp"
             android:layout_height="60dp"
             android:layout_marginTop="80px"
             android:layout_marginBottom="10dp"
             android:backgroundTint="#673AB7"
-            android:onClick="loginPage"
-            android:text="Login"
+            android:onClick="loginPages"
+            android:text="LoginPage"
             android:textSize="30sp" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/signUpPage"
             android:layout_width="230dp"
             android:layout_height="60dp"
             android:backgroundTint="@android:color/holo_blue_bright"
             android:hapticFeedbackEnabled="false"
-            android:onClick="signUpPage"
+            android:onClick="signUpPages"
             android:text="SignUp"
             android:textColorLink="#FFFFFF"
             android:textSize="30sp"

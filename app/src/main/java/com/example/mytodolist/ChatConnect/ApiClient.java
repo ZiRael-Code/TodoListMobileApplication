@@ -1,8 +1,12 @@
 package com.example.mytodolist.ChatConnect;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.mytodolist.LoginActivity;
 import com.google.gson.JsonObject;
 
 import okhttp3.RequestBody;
@@ -13,9 +17,10 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
-    private static final String BASE_URL = "http:192.168.98.71:8080";
+    private static final String BASE_URL = "http:192.168.177.71:8080";
     private ApiService apiService;
     public ApiClient(){
+//        Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -23,30 +28,40 @@ public class ApiClient {
         apiService = retrofit.create(ApiService.class);
     }
 
-    public boolean[] makePostRequest(RequestBody requestBody){
+
+    public static void afterSignup(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        context.startActivity(intent);
+    }
+
+
+    public void makePostRequest(RequestBody requestBody, TextView view, Context context){
         Call<JsonObject> postCall = apiService.sendRegisterReq(requestBody);
-        final boolean[] confirm = {false};
         postCall.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        confirm[0] = true;
+                        JsonObject responseBody = response.body();
+                        String message = responseBody.get("message").getAsString();
+                        view.setText(message);
+                        Toast.makeText(context, "Sign Up Successful", Toast.LENGTH_SHORT).show();
+                        afterSignup(context);
                     } else {
-                        confirm[0] = false;
+                        view.setText("Body is null");
+                        Toast.makeText(context, "Sign Up Failed", Toast.LENGTH_SHORT).show();
                     }
-                }else {
-                    confirm[0] = false;
+                } else {
+                    view.setText("Request was not successful: " + response.message());
+                    Toast.makeText(context, "Sign Up Failed", Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
-                confirm[0] = false;
+                view.setText("Failed: " + t.getMessage());
+                Toast.makeText(context, "Sign Up Failed", Toast.LENGTH_SHORT).show();
             }
-
         });
-        return confirm;
     }
 
     public void makeGetRequest(TextView textView){

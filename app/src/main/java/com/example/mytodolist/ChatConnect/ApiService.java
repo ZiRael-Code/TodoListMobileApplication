@@ -8,7 +8,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiService {
-        @POST("/User/createAccount")
+        @POST("/user/createAccount")
         retrofit2.Call<JsonObject> sendRegisterReq(@Body RequestBody requestBody);
 
         @GET("/process/demoGet")
