@@ -1,22 +1,24 @@
 package com.example.mytodolist;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.mytodolist.ChatConnect.ApiClient;
-import com.example.mytodolist.R;
+import com.google.gson.JsonObject;
+
+import okhttp3.FormBody;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 public class LoginActivity extends AppCompatActivity {
     ProgressBar progressBar;
+    EditText username;
+    EditText password;
+   private ApiClient apiClient = new ApiClient();
 
 
     @Override
@@ -24,11 +26,17 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         progressBar = findViewById(R.id.loginProgress);
+        username = findViewById(R.id.loginUsernameEdit);
+        password = findViewById(R.id.PasswordEdit);
     }
 
-    public void loginPage(View view){
-        Intent intent = new Intent(LoginActivity.this, SignUpActivity1.class);
+    public void loginSubmit(View view){
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("username",username.getText().toString());
+        jsonObject.addProperty("password",password.getText().toString());
+
+        RequestBody requestBody = FormBody.create(jsonObject.toString(), MediaType.parse("application/json"));
+        apiClient.makelLoginRequest(requestBody, LoginActivity.this);
         progressBar.setVisibility(View.VISIBLE);
-        startActivity(intent);
     }
 }

@@ -2,10 +2,10 @@ package com.example.mytodolist.ChatConnect;
 
 import android.content.Context;
 import android.content.Intent;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mytodolist.DashBooardActivity;
 import com.example.mytodolist.LoginActivity;
 import com.google.gson.JsonObject;
 
@@ -20,7 +20,6 @@ public class ApiClient {
     private static final String BASE_URL = "http:192.168.177.71:8080";
     private ApiService apiService;
     public ApiClient(){
-//        Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -29,9 +28,9 @@ public class ApiClient {
     }
 
 
-    public static void afterSignup(Context context) {
-        Intent intent = new Intent(context, LoginActivity.class);
-        context.startActivity(intent);
+    public static void nextScreen(Context thisContext, Class<?> nextContext) {
+        Intent intent = new Intent(thisContext, nextContext);
+        thisContext.startActivity(intent);
     }
 
 
@@ -46,7 +45,7 @@ public class ApiClient {
                         String message = responseBody.get("message").getAsString();
                         view.setText(message);
                         Toast.makeText(context, "Sign Up Successful", Toast.LENGTH_SHORT).show();
-                        afterSignup(context);
+                        nextScreen(context, LoginActivity.class);
                     } else {
                         view.setText("Body is null");
                         Toast.makeText(context, "Sign Up Failed", Toast.LENGTH_SHORT).show();
@@ -64,25 +63,30 @@ public class ApiClient {
         });
     }
 
-    public void makeGetRequest(TextView textView){
-        Call<JsonObject> getCall = apiService.sendGetReq();
-        getCall.enqueue(new Callback<JsonObject>() {
+
+    public void makelLoginRequest(RequestBody requestBody, Context context){
+        Call<JsonObject> getCall = apiService.sendLoginReq(requestBody);
+        getCall.enqueue(new Callback<JsonObject>()  {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    textView.setVisibility(View.VISIBLE);
-                    textView.setText("Successful\n");
-                    textView.append(response.body().toString());
-                } else {
-                    textView.setVisibility(View.VISIBLE);
-                    textView.setText("Failed\n");
+                if (response.isSuccessful()){
+                    if (response.body() != null){
+                        JsonObject responseBody = response.body();
+                        String message = responseBody.get("message").getAsString();
+
+                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+                        nextScreen(context, DashBooardActivity.class);
+                    }else {
+                        Toast.makeText(context, "Body is null ", Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Toast.makeText(context, "not successful ", Toast.LENGTH_SHORT).show();
+
                 }
             }
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
-                textView.setVisibility(View.VISIBLE);
-                textView.setText("Failed\n");
-                textView.append(t.getMessage());
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

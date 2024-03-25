@@ -1,13 +1,11 @@
 package com.example.mytodolist;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,8 +27,8 @@ public class SignUpActivity1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup1);
-        email = findViewById(R.id.EmailAddressEditText);
-        password = findViewById(R.id.editTextTextPassword);
+        email = findViewById(R.id.emailEdit);
+        password = findViewById(R.id.PasswordEdit);
         username = findViewById(R.id.UsernameEdit);
         textView = findViewById(R.id.error);
         ApiClient apiClient = new ApiClient();
@@ -46,8 +44,6 @@ public class SignUpActivity1 extends AppCompatActivity {
             jsonObject.addProperty("password", password.getText().toString());
             RequestBody requestBody = RequestBody.create(jsonObject.toString(), MediaType.parse("application/json"));
             apiClient.makePostRequest(requestBody, textView, SignUpActivity1.this);
-
-
         });
     }
 

@@ -11,6 +11,9 @@ public interface ApiService {
         @POST("/user/createAccount")
         retrofit2.Call<JsonObject> sendRegisterReq(@Body RequestBody requestBody);
 
+        @POST("/user/login")
+        retrofit2.Call<JsonObject> sendLoginReq(@Body  RequestBody requestBody);
+
         @GET("/process/demoGet")
         retrofit2.Call<JsonObject> sendGetReq();
 
