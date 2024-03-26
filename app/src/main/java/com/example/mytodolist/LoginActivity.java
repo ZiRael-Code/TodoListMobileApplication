@@ -19,7 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText username;
     EditText password;
    private ApiClient apiClient = new ApiClient();
-
+    JsonObject[] responses = new JsonObject[1];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.loginProgress);
         username = findViewById(R.id.loginUsernameEdit);
         password = findViewById(R.id.PasswordEdit);
+
     }
 
     public void loginSubmit(View view){
@@ -36,7 +37,13 @@ public class LoginActivity extends AppCompatActivity {
         jsonObject.addProperty("password",password.getText().toString());
 
         RequestBody requestBody = FormBody.create(jsonObject.toString(), MediaType.parse("application/json"));
-        apiClient.makelLoginRequest(requestBody, LoginActivity.this);
+        responses[0] = (apiClient.makelLoginRequest(requestBody, LoginActivity.this));
         progressBar.setVisibility(View.VISIBLE);
+
     }
+
+    public JsonObject userLogin() {
+        return responses[0];
+    }
+
 }

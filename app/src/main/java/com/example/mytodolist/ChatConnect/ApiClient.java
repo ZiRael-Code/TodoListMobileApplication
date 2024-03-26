@@ -17,7 +17,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
-    private static final String BASE_URL = "http:192.168.177.71:8080";
+    private static final String BASE_URL = "http:192.168.74.1:8080";
     private ApiService apiService;
     public ApiClient(){
         Retrofit retrofit = new Retrofit.Builder()
@@ -64,13 +64,15 @@ public class ApiClient {
     }
 
 
-    public void makelLoginRequest(RequestBody requestBody, Context context){
+    public JsonObject makelLoginRequest(RequestBody requestBody, Context context){
         Call<JsonObject> getCall = apiService.sendLoginReq(requestBody);
+        final JsonObject[] responsess = {new JsonObject()};
         getCall.enqueue(new Callback<JsonObject>()  {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 if (response.isSuccessful()){
                     if (response.body() != null){
+                        responsess[0] = response.body();
                         JsonObject responseBody = response.body();
                         String message = responseBody.get("message").getAsString();
 
@@ -89,5 +91,6 @@ public class ApiClient {
                 Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+       return responsess[0];
     }
 }

@@ -9,15 +9,15 @@
     tools:context=".DashBooardActivity">
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_width="414dp"
+        android:layout_height="920dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,11 +48,11 @@
                     android:id="@+id/imageButton2"
                     android:layout_width="46dp"
                     android:layout_height="36dp"
-                    android:layout_gravity="right"
-                    tools:srcCompat="@drawable/notifi" />
+                    android:layout_gravity="right" />
+                <!--                    tools:srcCompat="@drawable/notifi" />-->
 
                 <TextView
-                    android:id="@+id/textView15"
+                    android:id="@+id/nameView"
                     android:layout_width="match_parent"
                     android:layout_height="33dp"
                     android:text="TextView"
@@ -68,78 +68,83 @@
         <LinearLayout
             android:layout_width="373dp"
             android:layout_height="194dp"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:background="@drawable/dashboard"
             android:backgroundTint="#5f33e1"
-            android:orientation="vertical"
-            android:textAlignment="viewStart">
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView18"
+                android:id="@+id/progressPercentage"
                 android:layout_width="165dp"
                 android:layout_height="45dp"
                 android:text="Your today task is almost done!"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#000000"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:translationX="20dp"
-                android:translationY="17dp" />
+                android:translationY="25dp" />
+
+            <LinearLayout
+                android:layout_width="112dp"
+                android:layout_height="145dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:baselineAligned="true"
+                android:orientation="vertical"
+                android:translationX="70dp"
+                android:translationY="-20dp">
+
+                <TextView
+                    android:id="@+id/messageProgressPercentage"
+                    android:layout_width="63dp"
+                    android:layout_height="34dp"
+                    android:text="21%"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="26sp"
+                    android:translationX="25dp"
+                    android:translationY="45dp" />
+
+                <ProgressBar
+                    android:id="@+id/dailyProgress"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="102dp"
+                    android:layout_height="114dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="95dp"
+                    android:background="@drawable/custom_progress_bar"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="50"
+                    android:progressDrawable="@drawable/circular_progress_drawable"
+                    android:translationX="93dp"
+                    android:translationY="-47dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/imageButton4"
+                android:id="@+id/threeButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="22dp"
                 android:layout_gravity="right"
-                android:autoText="false"
                 android:background="@drawable/threedot"
                 android:backgroundTint="#9f85ed"
                 android:foregroundGravity="top"
-                android:shadowRadius="@dimen/cardview_default_radius"
                 android:text=". . ."
-                android:textAllCaps="false"
-                android:textSize="30dp"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 android:translationX="-10dp"
-                android:translationY="-30dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                android:translationY="-140dp" />
 
-
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="103dp"
-                android:layout_height="105dp"
-                android:layout_gravity="center"
-                android:background="@drawable/custom_progress_bar"
-                android:indeterminate="false"
-                android:max="100"
-                android:progress="50"
-                android:progressDrawable="@drawable/circular_progress_drawable"
-                android:translationX="62dp"
-                android:translationY="-57dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textViewPercentage"
-                android:layout_width="wrap_content"
-                android:layout_height="46dp"
-                android:layout_gravity="center"
-                android:text="50%"
-                android:textColor="@android:color/black"
-                android:textSize="24sp"
-                android:translationX="65dp"
-                android:translationY="-125dp"
-                app:layout_constraintBottom_toBottomOf="@id/progressBar"
-                app:layout_constraintEnd_toEndOf="@id/progressBar"
-                app:layout_constraintStart_toStartOf="@id/progressBar"
-                app:layout_constraintTop_toTopOf="@id/progressBar" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/viewDailyTaskButton"
                 android:layout_width="wrap_content"
                 android:layout_height="62dp"
                 android:layout_marginTop="-50dp"
@@ -150,11 +155,12 @@
                 android:textSize="23sp"
                 android:textStyle="bold"
                 android:translationX="20dp"
-                android:translationY="-70dp"
+                android:translationY="-20dp"
                 app:cornerRadius="20dp" />
 
 
         </LinearLayout>
+
 
         <TextView
             android:id="@+id/textView3"
@@ -166,9 +172,8 @@
             android:textSize="30dp"
             android:textStyle="bold" />
 
-
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/taskInProgress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/threedot"
@@ -180,15 +185,18 @@
             android:translationY="-37dp" />
 
         <HorizontalScrollView
+            android:id="@+id/taskView"
             android:layout_width="match_parent"
             android:layout_height="133dp"
             android:fadeScrollbars="true">
 
             <LinearLayout
+                android:id="@+id/individualTaskLayout"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/dashboard"
-                android:backgroundTint="#F68989"
+                android:backgroundTint="#E49E9E"
                 android:orientation="vertical"
                 android:translationX="20dp">
 
@@ -198,7 +206,7 @@
 
                 <!-- Example child view -->
                 <TextView
-                    android:id="@+id/noProject"
+                    android:id="@+id/projectType"
                     android:layout_width="100dp"
                     android:layout_height="44dp"
                     android:layout_marginLeft="20dp"
@@ -209,19 +217,20 @@
                     android:translationY="5dp" />
 
                 <ImageView
-                    android:id="@+id/imageView6"
+                    android:id="@+id/projectTypeImg"
                     android:layout_width="30dp"
                     android:layout_height="25dp"
                     android:layout_gravity="right|top"
                     android:background="@drawable/circularg_logo"
                     android:backgroundTint="#970101"
                     android:forceHasOverlappingRendering="true"
-                    android:labelFor="@id/noProject"
+                    android:labelFor="@id/projectType"
                     android:translationX="-10dp"
                     android:translationY="-37dp"
                     tools:srcCompat="@mipmap/brief" />
 
                 <TextView
+                    android:id="@+id/projectName"
                     android:layout_width="252dp"
                     android:layout_height="41dp"
                     android:layout_marginTop="-30dp"
@@ -232,7 +241,7 @@
                     android:translationX="17dp" />
 
                 <ProgressBar
-                    android:id="@+id/progressBarDash"
+                    android:id="@+id/individualProgressVerti"
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="9dp"
@@ -249,6 +258,304 @@
             </LinearLayout>
         </HorizontalScrollView>
 
+        <TextView
+            android:id="@+id/taskGroup"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="serif"
+            android:text="  Task Group"
+            android:textColor="#000000"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/threedot"
+            android:text="6"
+            android:textAlignment="center"
+            android:textColor="#3F51B5"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:translationX="195dp"
+            android:translationY="-37dp" />
+
+
+        <!--        <ScrollView-->
+        <!--            android:layout_width="400dp"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:fadeScrollbars="true">-->
+
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="400dp"-->
+        <!--                android:background="@drawable/dashboard"-->
+        <!--                android:backgroundTint="#E49E9E"-->
+        <!--                android:orientation="horizontal"-->
+        <!--                android:paddingBottom="-10dp">-->
+
+        <!--                <ImageView-->
+        <!--                    android:id="@+id/imageView"-->
+        <!--                    android:layout_width="42dp"-->
+        <!--                    android:layout_height="48dp"-->
+        <!--                    android:layout_marginLeft="20dp"-->
+        <!--                    app:srcCompat="@mipmap/brief" />-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/noProjj"-->
+        <!--                    android:layout_width="189dp"-->
+        <!--                    android:layout_height="39dp"-->
+        <!--                    android:fontFamily="sans-serif-medium"-->
+        <!--                    android:text="No Text"-->
+        <!--                    android:textColor="#000000"-->
+        <!--                    android:textColorHint="#000000"-->
+        <!--                    android:textSize="24sp"-->
+        <!--                    android:translationX="13dp" />-->
+
+        <!--                <ProgressBar-->
+        <!--                    android:id="@+id/progressBar"-->
+        <!--                    style="?android:attr/progressBarStyleHorizontal"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="49dp"-->
+        <!--                    android:layout_gravity="center"-->
+        <!--                    android:layout_marginTop="-10dp"-->
+        <!--                    android:background="@drawable/custom_progress_bar"-->
+        <!--                    android:indeterminate="false"-->
+        <!--                    android:max="100"-->
+        <!--                    android:progress="50"-->
+        <!--                    android:progressDrawable="@drawable/circular_progress_drawable"-->
+        <!--                    android:translationX="70dp"-->
+        <!--                    android:translationY="0dp"-->
+        <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                    app:layout_constraintStart_toStartOf="parent"-->
+        <!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/textView101"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginLeft="20dp"-->
+        <!--                    android:layout_marginTop="70dp"-->
+        <!--                    android:layout_weight="1"-->
+        <!--                    android:text="23 Task"-->
+        <!--                    android:textColor="#7E7777"-->
+        <!--                    android:translationX="-245dp"-->
+        <!--                    android:translationY="-50dp" />-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/textView131"-->
+        <!--                    android:layout_width="39dp"-->
+        <!--                    android:layout_height="33dp"-->
+        <!--                    android:layout_marginLeft="-68dp"-->
+        <!--                    android:layout_marginTop="15dp"-->
+        <!--                    android:layout_weight="1"-->
+        <!--                    android:text="50%"-->
+        <!--                    android:textColor="#000000"-->
+        <!--                    android:textSize="15sp" />-->
+        <!--            </LinearLayout>-->
+        <!--        </ScrollView>-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="323dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linear3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <ScrollView
+                    android:id="@+id/vscroll2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="218dp"
+                    android:fadeScrollbars="true"
+                    android:isScrollContainer="true"
+                    android:padding="8dp"
+                    android:scrollbars="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/linear4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <LinearLayout
+                            android:layout_width="381dp"
+                            android:layout_height="224dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:id="@+id/projGroupLayout"
+                                android:layout_width="365dp"
+                                android:layout_height="69dp"
+                                android:layout_marginTop="15dp"
+                                android:background="@drawable/task_colour"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/projectGroupImg"
+                                    android:layout_width="73dp"
+                                    android:layout_height="45dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_weight="0"
+                                    android:background="@drawable/circularg_logo"
+                                    android:baselineAlignBottom="true"
+                                    android:paddingLeft="-10dp"
+                                    android:translationX="15dp"
+                                    android:translationY="5dp"
+                                    tools:srcCompat="@mipmap/brief" />
+
+                                <LinearLayout
+                                    android:layout_width="118dp"
+                                    android:layout_height="59dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/projGroupName"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="10dp"
+                                        android:backgroundTint="#000000"
+                                        android:fontFamily="sans-serif-medium"
+                                        android:text="No Project"
+                                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                        android:textColor="#000000" />
+
+                                    <TextView
+                                        android:id="@+id/projGroupSize"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="21 Tasks"
+                                        android:textColor="#4C4646" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:baselineAligned="true"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/projGroupProgressPercentage"
+                                        android:layout_width="35dp"
+                                        android:layout_height="wrap_content"
+                                        android:text="21%"
+                                        android:textAlignment="center"
+                                        android:textColor="#000000"
+                                        android:translationX="20dp"
+                                        android:translationY="20dp" />
+
+                                    <ProgressBar
+                                        android:id="@+id/projGroupProgress"
+                                        style="?android:attr/progressBarStyleHorizontal"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginTop="20dp"
+                                        android:layout_marginRight="95dp"
+                                        android:background="@drawable/custom_progress_bar"
+                                        android:indeterminate="false"
+                                        android:max="100"
+                                        android:progress="50"
+                                        android:progressDrawable="@drawable/circular_progress_drawable"
+                                        android:translationX="93dp"
+                                        android:translationY="-35dp"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/testLoginResponse"
+                                android:layout_width="match_parent"
+                                android:layout_height="96dp"
+                                android:text="TextView" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_gravity="top"
+                    android:layout_marginTop="20dp"
+                    android:background="@mipmap/navagat"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:translationY="-15dp">
+
+                    <Button
+                        android:id="@+id/dashBoardHome"
+                        android:layout_width="19dp"
+                        android:layout_height="23dp"
+                        android:layout_marginLeft="38dp"
+                        android:layout_marginBottom="-20dp"
+                        android:layout_weight="0"
+                        android:text="Button" />
+
+                    <Button
+                        android:id="@+id/button2"
+                        android:layout_width="19dp"
+                        android:layout_height="23dp"
+                        android:layout_marginLeft="55dp"
+                        android:layout_marginBottom="-20dp"
+                        android:layout_weight="0"
+                        android:text="Button" />
+
+                    <Button
+                        android:id="@+id/addProject"
+                        android:layout_width="44dp"
+                        android:layout_height="46dp"
+                        android:layout_marginLeft="55dp"
+                        android:layout_marginTop="-11dp"
+                        android:layout_weight="0"
+                        android:backgroundTint="#BC6868"
+                        android:text="Button" />
+
+                    <Button
+                        android:id="@+id/button5"
+                        android:layout_width="19dp"
+                        android:layout_height="23dp"
+                        android:layout_marginLeft="53dp"
+                        android:layout_marginRight="68dp"
+                        android:layout_marginBottom="-20dp"
+                        android:layout_weight="0"
+                        android:text="Button" />
+
+                    <Button
+                        android:id="@+id/myAccount"
+                        android:layout_width="19dp"
+                        android:layout_height="24dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginBottom="-20dp"
+                        android:layout_weight="0"
+                        android:text="Button"
+                        android:translationX="-15dp" />
+                </LinearLayout>
+            </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
