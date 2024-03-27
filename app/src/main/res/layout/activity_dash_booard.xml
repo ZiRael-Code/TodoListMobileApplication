@@ -22,7 +22,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="85dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:translationY="30dp">
 
             <ImageView
                 android:id="@+id/imageView5"
@@ -72,7 +74,8 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/dashboard"
             android:backgroundTint="#5f33e1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:translationY="20dp">
 
             <TextView
                 android:id="@+id/progressPercentage"
@@ -170,7 +173,8 @@
             android:text="  In Progress"
             android:textColor="#000000"
             android:textSize="30dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:translationY="20dp" />
 
         <TextView
             android:id="@+id/taskInProgress"
@@ -187,73 +191,80 @@
         <HorizontalScrollView
             android:id="@+id/taskView"
             android:layout_width="match_parent"
-            android:layout_height="133dp"
+            android:layout_height="129dp"
             android:fadeScrollbars="true">
 
             <LinearLayout
-                android:id="@+id/individualTaskLayout"
-                android:layout_width="50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/dashboard"
-                android:backgroundTint="#E49E9E"
-                android:orientation="vertical"
-                android:translationX="20dp">
+                android:orientation="horizontal">
 
-                <!-- Add your views here -->
-                <!-- Adjust width and height of child views as needed -->
-                <!-- Ensure the content width exceeds the width of the HorizontalScrollView for scrolling to work -->
+                <LinearLayout
+                    android:id="@+id/individualTaskLayout"
+                    android:layout_width="289dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/dashboard"
+                    android:backgroundTint="#E49E9E"
+                    android:orientation="vertical"
+                    android:translationX="20dp">
 
-                <!-- Example child view -->
-                <TextView
-                    android:id="@+id/projectType"
-                    android:layout_width="100dp"
-                    android:layout_height="44dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp"
-                    android:text="No Project"
-                    android:textColor="#373636"
-                    android:textSize="15sp"
-                    android:translationY="5dp" />
+                    <!-- Add your views here -->
+                    <!-- Adjust width and height of child views as needed -->
+                    <!-- Ensure the content width exceeds the width of the HorizontalScrollView for scrolling to work -->
 
-                <ImageView
-                    android:id="@+id/projectTypeImg"
-                    android:layout_width="30dp"
-                    android:layout_height="25dp"
-                    android:layout_gravity="right|top"
-                    android:background="@drawable/circularg_logo"
-                    android:backgroundTint="#970101"
-                    android:forceHasOverlappingRendering="true"
-                    android:labelFor="@id/projectType"
-                    android:translationX="-10dp"
-                    android:translationY="-37dp"
-                    tools:srcCompat="@mipmap/brief" />
+                    <!-- Example child view -->
+                    <TextView
+                        android:id="@+id/projectType"
+                        android:layout_width="100dp"
+                        android:layout_height="44dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:text="No Project"
+                        android:textColor="#373636"
+                        android:textSize="15sp"
+                        android:translationY="5dp" />
 
-                <TextView
-                    android:id="@+id/projectName"
-                    android:layout_width="252dp"
-                    android:layout_height="41dp"
-                    android:layout_marginTop="-30dp"
-                    android:text="No Task"
-                    android:textColor="#000000"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:translationX="17dp" />
+                    <ImageView
+                        android:id="@+id/projectTypeImg"
+                        android:layout_width="30dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="right|top"
+                        android:background="@drawable/circularg_logo"
+                        android:backgroundTint="#970101"
+                        android:forceHasOverlappingRendering="true"
+                        android:labelFor="@id/projectType"
+                        android:translationX="-10dp"
+                        android:translationY="-37dp"
+                        tools:srcCompat="@mipmap/brief" />
 
-                <ProgressBar
-                    android:id="@+id/individualProgressVerti"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="9dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:backgroundTint="@color/white"
-                    android:indeterminate="false"
-                    android:max="100"
-                    android:progress="0"
-                    android:progressBackgroundTint="#FFFFFF" />
-                <!-- Add more child views as needed -->
+                    <TextView
+                        android:id="@+id/projectName"
+                        android:layout_width="252dp"
+                        android:layout_height="41dp"
+                        android:layout_marginTop="-30dp"
+                        android:text="No Task"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:translationX="17dp" />
+
+                    <ProgressBar
+                        android:id="@+id/individualProgressVerti"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="9dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:backgroundTint="@color/white"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressBackgroundTint="#FFFFFF" />
+                    <!-- Add more child views as needed -->
+
+                </LinearLayout>
 
             </LinearLayout>
         </HorizontalScrollView>
@@ -387,6 +398,7 @@
                         android:padding="8dp">
 
                         <LinearLayout
+                            android:id="@+id/groupLayout"
                             android:layout_width="381dp"
                             android:layout_height="224dp"
                             android:orientation="vertical">
@@ -396,7 +408,9 @@
                                 android:layout_width="365dp"
                                 android:layout_height="69dp"
                                 android:layout_marginTop="15dp"
+                                android:layout_marginBottom="15dp"
                                 android:background="@drawable/task_colour"
+                                android:onClick="projectClicked"
                                 android:orientation="horizontal">
 
                                 <ImageView
@@ -479,12 +493,6 @@
 
                             </LinearLayout>
 
-                            <TextView
-                                android:id="@+id/testLoginResponse"
-                                android:layout_width="match_parent"
-                                android:layout_height="96dp"
-                                android:text="TextView" />
-
                         </LinearLayout>
                     </LinearLayout>
                 </ScrollView>
@@ -499,7 +507,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:layout_gravity="top"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="7dp"
                     android:background="@mipmap/navagat"
                     android:gravity="center"
                     android:orientation="horizontal"

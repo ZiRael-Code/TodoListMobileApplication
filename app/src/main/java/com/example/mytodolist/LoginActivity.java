@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,8 +19,8 @@ public class LoginActivity extends AppCompatActivity {
     ProgressBar progressBar;
     EditText username;
     EditText password;
+    TextView bodyView;
    private ApiClient apiClient = new ApiClient();
-    JsonObject[] responses = new JsonObject[1];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,22 +29,22 @@ public class LoginActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.loginProgress);
         username = findViewById(R.id.loginUsernameEdit);
         password = findViewById(R.id.PasswordEdit);
+        bodyView = findViewById(R.id.bodyView);
 
     }
 
-    public void loginSubmit(View view){
+    public void loginSubmit(View view) throws InterruptedException {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("username",username.getText().toString());
         jsonObject.addProperty("password",password.getText().toString());
 
         RequestBody requestBody = FormBody.create(jsonObject.toString(), MediaType.parse("application/json"));
-        responses[0] = (apiClient.makelLoginRequest(requestBody, LoginActivity.this));
+        apiClient.makelLoginRequest(requestBody, LoginActivity.this, bodyView);
         progressBar.setVisibility(View.VISIBLE);
+//        Thread.sleep(1500);
+        finish();
 
     }
 
-    public JsonObject userLogin() {
-        return responses[0];
-    }
 
 }

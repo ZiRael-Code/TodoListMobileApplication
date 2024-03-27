@@ -28,8 +28,11 @@ public class ApiClient {
     }
 
 
-    public static void nextScreen(Context thisContext, Class<?> nextContext) {
+    public static void nextScreen(Context thisContext, Class<?> nextContext, JsonObject response) {
         Intent intent = new Intent(thisContext, nextContext);
+        if (nextContext.equals(DashBooardActivity.class)) {
+            intent.putExtra("jsonResponse", response.toString());
+        }
         thisContext.startActivity(intent);
     }
 
@@ -45,7 +48,7 @@ public class ApiClient {
                         String message = responseBody.get("message").getAsString();
                         view.setText(message);
                         Toast.makeText(context, "Sign Up Successful", Toast.LENGTH_SHORT).show();
-                        nextScreen(context, LoginActivity.class);
+                        nextScreen(context, LoginActivity.class, responseBody);
                     } else {
                         view.setText("Body is null");
                         Toast.makeText(context, "Sign Up Failed", Toast.LENGTH_SHORT).show();
@@ -64,26 +67,24 @@ public class ApiClient {
     }
 
 
-    public JsonObject makelLoginRequest(RequestBody requestBody, Context context){
+    public void makelLoginRequest(RequestBody requestBody, Context context, TextView bodyView){
         Call<JsonObject> getCall = apiService.sendLoginReq(requestBody);
-        final JsonObject[] responsess = {new JsonObject()};
         getCall.enqueue(new Callback<JsonObject>()  {
+
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 if (response.isSuccessful()){
                     if (response.body() != null){
-                        responsess[0] = response.body();
                         JsonObject responseBody = response.body();
                         String message = responseBody.get("message").getAsString();
-
+//                        bodyView.setText(responseBody.get("username").getAsString());
                         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-                        nextScreen(context, DashBooardActivity.class);
+                        nextScreen(context, DashBooardActivity.class, responseBody);
                     }else {
                         Toast.makeText(context, "Body is null ", Toast.LENGTH_SHORT).show();
                     }
                 }else {
                     Toast.makeText(context, "not successful ", Toast.LENGTH_SHORT).show();
-
                 }
             }
             @Override
@@ -91,6 +92,41 @@ public class ApiClient {
                 Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-       return responsess[0];
     }
+
+//    public String getTaskGroup(int id, TextView view){
+//        Call<JsonObject> details = apiService.sendGetProjReq(id);
+//        final String[] responses = {""};
+//        details.enqueue(new Callback<JsonObject>() {
+//            @Override
+//            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+//                if (response.isSuccessful()){
+//                    if (response.body() != null){
+////                        view.setVisibility(View.GONE);
+//                        responses[0] = response.body().toString();
+////                       view.setText(responses[0]);
+//
+//                    }else {
+//                            view.setText("Body is null ");
+//                    }
+//
+//                }else {
+//                    view.setText("not successful ");
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<JsonObject> call, Throwable throwable) {
+//                view.setText(throwable.getMessage());
+//                System.out.println(throwable.getMessage());
+//            }
+//        });
+//        return responses[0];
+//    }
+
+public ApiService returnApiService(){
+        return apiService;
+}
+
 }
