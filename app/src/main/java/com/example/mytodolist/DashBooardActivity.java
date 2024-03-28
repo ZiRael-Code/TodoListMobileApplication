@@ -1,6 +1,8 @@
 package com.example.mytodolist;
 
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
@@ -18,6 +20,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import DateUtils.DateCheckings;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,9 +36,7 @@ public class DashBooardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_booard);
         groupLayout = findViewById(R.id.groupLayout);
-//        textLoginResponse = findViewById(R.id.testLoginResponse);
         name = findViewById(R.id.nameView);
-//        view = findViewById(R.id.projGroupErrorLogger);
         String jsonResponseString = getIntent().getStringExtra("jsonResponse");
         try {
             assert jsonResponseString != null;
@@ -53,9 +54,6 @@ public class DashBooardActivity extends AppCompatActivity {
                     if (response.isSuccessful()) {
                         if (response.body() != null) {
                             try {
-
-//                                view.setText(response.body().toString());
-//                                view.setVisibility(View.GONE);
                                 JSONObject jsonObject1 = new JSONObject(response.body().toString());
 
                                 JSONArray itemsArray = jsonObject1.getJSONArray("items");
@@ -64,7 +62,6 @@ public class DashBooardActivity extends AppCompatActivity {
                             } catch (JSONException e) {
                                 toast(e.getMessage().toString());
                             }
-//                           
 
                         } else {
                             toast("Body is null ");
@@ -88,40 +85,65 @@ public class DashBooardActivity extends AppCompatActivity {
         }
     }
 
+
     private void projectGroup(JSONArray itemsArray) throws JSONException {
+        int currentProg = 0;
 
-
-
-        if (itemsArray.getJSONArray(0).length() != 0) {
-            JSONArray innerArrays = itemsArray.getJSONArray(0);
-            JSONObject itemObjects = innerArrays.getJSONObject(0);
+        if (itemsArray.getJSONArray(0).getJSONObject(0).length() != 0) {
             LinearLayout layout1 = groupLayout.findViewById(R.id.projGroupLayout);
-            TextView name = layout1.findViewById(R.id.projGroupName);
-            name.setText(itemObjects.getString("taskType"));
-            TextView projSizes = layout1.findViewById(R.id.projGroupSize);
-            projSizes.setText(String.valueOf(innerArrays.length()) + " Task");
+                groupLayout.removeView(layout1);
 
-            for (int i = 1; i < itemsArray.length(); i++) {
+            TextView inProgressText = findViewById(R.id.taskInProgress);
+
+
+
+
+
+            for (int i = 0; i < itemsArray.length(); i++) {
                 JSONArray innerArray = itemsArray.getJSONArray(i);
-                if (innerArray.length() != 0) {
-
+                inProgressText.setText(String.valueOf(innerArray.length()));
                     View newLayout = getLayoutInflater().inflate(R.layout.activity_dash_booard, null);
-//            LinearLayout layout = groupLayout.findViewById(R.id.projGroupLayout);
                     LinearLayout eachGroup = newLayout.findViewById(R.id.projGroupLayout);
 
                     TextView projName = eachGroup.findViewById(R.id.projGroupName);
                     TextView projSize = eachGroup.findViewById(R.id.projGroupSize);
-                    projSize.setText(String.valueOf(innerArray.length()) + " Task");
-                    TextView percentage = eachGroup.findViewById(R.id.projGroupProgressPercentage);
+                    projSize.setText(innerArray.length() + " Task");
+
+//                LinearLayout yourLayout = findViewById(R.id.toIncrease);
+
                     for (int j = 0; j < innerArray.length(); j++) {
+
+
                         JSONObject itemObject = innerArray.getJSONObject(j);
                         projName.setText(itemObject.getString("taskType"));
+
+
+
+
+//                        String dueDate = itemObject.getString("dueDate");
+//                        if (DateCheckings.DateUtils.isApiDateToday(dueDate)){
+//                            currentProg++;
+//                            LinearLayout indiTask = newLayout.findViewById(R.id.individualTaskLayout);
+//                            TextView projType = indiTask.findViewById(R.id.projectType);
+//                            TextView taskName = findViewById(R.id.projectName);
+//
+//                            projType.setText(itemObject.getString("taskType"));
+//                            taskName.setText(itemObject.getString("title"));
+//                            ((ViewGroup) indiTask.getParent()).removeView(indiTask);
+//                            groupLayout.addView(indiTask);
+//
+//
+//                        }
                         break;
                     }
 
                     ((ViewGroup) eachGroup.getParent()).removeView(eachGroup);
                     groupLayout.addView(eachGroup);
-                }
+//                }
+//                TextView currentTaskCount = layout1.findViewById(R.id.taskGroupCount);
+//                currentTaskCount.setText(String.valueOf(currentProg));
+//
+
             }
         }
 

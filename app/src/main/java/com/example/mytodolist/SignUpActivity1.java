@@ -1,5 +1,6 @@
 package com.example.mytodolist;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -45,6 +46,12 @@ public class SignUpActivity1 extends AppCompatActivity {
             RequestBody requestBody = RequestBody.create(jsonObject.toString(), MediaType.parse("application/json"));
             apiClient.makePostRequest(requestBody, textView, SignUpActivity1.this);
         });
+
+    }
+
+    public void upLogAC(View view){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 
 
