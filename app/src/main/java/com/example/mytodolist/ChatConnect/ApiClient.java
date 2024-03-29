@@ -94,37 +94,6 @@ public class ApiClient {
         });
     }
 
-//    public String getTaskGroup(int id, TextView view){
-//        Call<JsonObject> details = apiService.sendGetProjReq(id);
-//        final String[] responses = {""};
-//        details.enqueue(new Callback<JsonObject>() {
-//            @Override
-//            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-//                if (response.isSuccessful()){
-//                    if (response.body() != null){
-////                        view.setVisibility(View.GONE);
-//                        responses[0] = response.body().toString();
-////                       view.setText(responses[0]);
-//
-//                    }else {
-//                            view.setText("Body is null ");
-//                    }
-//
-//                }else {
-//                    view.setText("not successful ");
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<JsonObject> call, Throwable throwable) {
-//                view.setText(throwable.getMessage());
-//                System.out.println(throwable.getMessage());
-//            }
-//        });
-//        return responses[0];
-//    }
-
 public ApiService returnApiService(){
         return apiService;
 }

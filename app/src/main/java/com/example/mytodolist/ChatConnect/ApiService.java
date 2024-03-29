@@ -19,5 +19,6 @@ public interface ApiService {
         @GET("/user/projectGroup/{id}")
         Call<JsonObject> sendGetProjReq(@Path("id") int id);
 
-
+        @GET("/user/todayTasks/{id}")
+        Call<JsonObject> sendGetTodayTask(@Path("id") int id);
 }

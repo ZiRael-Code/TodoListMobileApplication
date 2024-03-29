@@ -1,5 +1,6 @@
 package com.example.mytodolist;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -44,6 +45,11 @@ public class LoginActivity extends AppCompatActivity {
 //        Thread.sleep(1500);
         finish();
 
+    }
+
+    public void dontHaveAcc(View view){
+        Intent intent = new Intent(this, SignUpActivity1.class);
+        startActivity(intent);
     }
 
 
