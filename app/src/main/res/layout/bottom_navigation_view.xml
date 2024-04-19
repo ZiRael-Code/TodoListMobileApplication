@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="70dp"-->
+<!--        android:background="@android:color/transparent"-->
+<!--        android:translationY="-39dp">-->
+<!--    &lt;!&ndash;start&ndash;&gt;-->
+
+
+
+    <LinearLayout
+        android:id="@+id/botton_navagation_layout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="top"
+        android:background="@mipmap/navagat"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:translationY="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
+        <Button
+            android:id="@+id/dashBoardHome"
+            android:layout_width="19dp"
+            android:layout_height="23dp"
+            android:layout_marginLeft="38dp"
+            android:layout_marginBottom="-20dp"
+            android:layout_weight="0"
+            android:backgroundTint="@android:color/transparent"
+            android:onClick="nextScreen"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/todayTaskNava"
+            android:layout_width="19dp"
+            android:layout_height="23dp"
+            android:layout_marginLeft="55dp"
+            android:layout_marginBottom="-20dp"
+            android:layout_weight="0"
+            android:onClick="nextScreen"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/addProject"
+            android:layout_width="44dp"
+            android:layout_height="46dp"
+            android:layout_marginLeft="55dp"
+            android:layout_marginTop="-11dp"
+            android:layout_weight="0"
+            android:backgroundTint="#BC6868"
+            android:onClick="nextScreen"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/viewTask"
+            android:layout_width="19dp"
+            android:layout_height="23dp"
+            android:layout_marginLeft="53dp"
+            android:layout_marginRight="68dp"
+            android:layout_marginBottom="-20dp"
+            android:layout_weight="0"
+            android:onClick="nextScreen"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/myAccount"
+            android:layout_width="19dp"
+            android:layout_height="24dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="-20dp"
+            android:layout_weight="0"
+            android:onClick="nextScreen"
+            android:text="Button"
+            android:translationX="-15dp" />
+    </LinearLayout>
+<!--getstart-->
+    <!--    end-->
+    <!--    </com.google.android.material.bottomnavigation.BottomNavigationView>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

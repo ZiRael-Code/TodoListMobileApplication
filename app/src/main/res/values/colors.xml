@@ -2,4 +2,42 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="office">#f478b8</color>
+    <color name="officeSpar">#ffe4f2</color>
+
+
+    <color name="personal">#9260f4</color>
+    <color name="personalSpar">#ede4ff</color>
+
+
+    <color name="dailyStudy">#ff9142</color>
+    <color name="dailyStudySpar">#ffe6d4</color>
+
+
+
+    <color name="dailyActivity">#ffe89b</color>
+    <color name="dailyActivityspar">#fff6d4</color>
+
+
+
+    <color name="c5">#56ccb4</color>
+    <color name="c5spar">#95C3B9</color>
+
+
+    <color name="c6">#fe9dfe</color>
+    <color name="c6spar">#F3C5F3</color>
+
+
+    <color name="c7">#ffc5c7</color>
+    <color name="c7spar">#FFE1E2</color>
+
+
+    <color name="c8">#92ceac</color>
+    <color name="c8spar">#AECDBC</color>
+
+
+    <color name="c9">#9ba6ff</color>
+    <color name="c9spar">#C4CAFD</color>
+
 </resources>

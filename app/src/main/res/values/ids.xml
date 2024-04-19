@@ -2,7 +2,7 @@
 <resources>
     <item name="imageView" type="id" />
     <item name="individualTaskLayout" type="id" />
-    <item name="projectType" type="id" />
+    <item name="projectType1" type="id" />
     <item name="projectTypeImg" type="id" />
     <item name="individualProgressVerti" type="id" />
     <item name="projectName" type="id" />

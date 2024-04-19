@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddTask">
+
+    <LinearLayout
+        android:id="@+id/mainView"
+        android:layout_width="409dp"
+        android:layout_height="912dp"
+        android:background="@mipmap/backgroud"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="10dp">
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:width="0dp"
+        android:background="@drawable/arrow"
+        app:iconSize="38dp"
+        android:layout_marginLeft="12dp"/>
+
+    <TextView
+        android:layout_width="233dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Add Task"
+        android:textColor="@color/black"
+        android:textSize="35sp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="0dp"/>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="216dp"
+            android:forceHasOverlappingRendering="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/imageView9"
+                android:layout_width="match_parent"
+                android:layout_height="215dp"
+                android:layout_gravity="top"
+                android:forceHasOverlappingRendering="true"
+                android:gravity="top"
+                android:orientation="vertical"
+                android:translationY="30dp"
+                tools:srcCompat="@tools:sample/avatars">
+
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="275dp"
+                android:layout_height="185dp"
+                android:layout_marginTop="-100dp"
+                android:forceHasOverlappingRendering="true"
+                android:translationY="-35dp"
+                app:srcCompat="@drawable/circularg_logo" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="61dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="-20dp"
+                android:layout_weight="0"
+                android:background="@android:drawable/ic_menu_edit"
+                android:backgroundTint="#000000"
+                android:forceHasOverlappingRendering="true"
+                android:foreground="@android:drawable/ic_menu_edit"
+                android:translationX="80dp"
+                android:translationY="-55dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/praise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+<!--start-->
+            <LinearLayout
+                android:id="@+id/taskNameFields"
+                android:layout_width="390dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/edit_text_background"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/titleTypeLogo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:background="@mipmap/office"
+                    android:backgroundTint="#737272"
+                    android:translationX="-5dp" />
+
+                <LinearLayout
+                    android:layout_width="294dp"
+                    android:layout_height="49dp"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/taskType"
+                            android:layout_width="306dp"
+                            android:layout_height="30dp"
+                            android:text="Task Group"
+                            android:textSize="12sp"
+                            android:translationY="5dp" />
+
+                        <EditText
+                            android:id="@+id/taskTypeEdit"
+                            android:layout_width="310dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="-23dp"
+                            android:ems="10"
+                            android:fontFamily="sans-serif-light"
+                            android:hint="Task Group"
+                            android:inputType="text"
+                            android:textColorHint="#474747"
+                            android:textStyle="bold"
+                            android:translationY="4dp" />
+
+                        <Spinner
+                            android:id="@+id/projectType"
+                            android:layout_width="44dp"
+                            android:layout_height="34dp"
+                            android:layout_gravity="right"
+                            android:dropDownWidth="171dp"
+                            android:dropDownSelector="@drawable/custom_dropdown_icon"
+                            android:fitsSystemWindows="false"
+                            android:pointerIcon="top_right_diagonal_double_arrow"
+                            android:translationY="-50dp" />
+                    </LinearLayout>
+                    <!--            android:background="@null"-->
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/brush1"
+                    android:layout_width="35dp"
+                    android:layout_height="39dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@android:drawable/ic_menu_edit"
+                    android:translationX="10dp" />
+            </LinearLayout>
+<!--            end-->
+
+
+            <LinearLayout
+                android:id="@+id/titleFields"
+                android:layout_width="390dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/edit_text_background"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/taskNameTypeLogo"
+                    android:layout_width="37dp"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@mipmap/description"
+                    android:backgroundTint="#737272" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/titleEditId"
+                        android:layout_width="299dp"
+                        android:layout_height="56dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Task Name"
+                        android:inputType="text"
+                        android:textColorHint="#2E2E2E" />
+
+
+                </LinearLayout>
+                <!--            android:background="@null"-->
+                <ImageView
+                    android:id="@+id/brush2"
+                    android:layout_width="35dp"
+                    android:layout_height="39dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@android:drawable/ic_menu_edit" />
+            </LinearLayout>
+<!--            end 2-->
+
+            <LinearLayout
+                android:id="@+id/descriptionFields"
+                android:layout_width="390dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/edit_text_background"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/descriptionTypeLogo"
+                    android:layout_width="34dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@mipmap/description"
+                    android:backgroundTint="#737272" />
+
+                <EditText
+                    android:id="@+id/descriptionEditId"
+                    android:layout_width="183dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Description"
+                    android:inputType="text"
+                    android:textColorHint="#FF2E2E2E" />
+                <!--            android:background="@null"-->
+                <ImageView
+                    android:id="@+id/brush3"
+                    android:layout_width="35dp"
+                    android:layout_height="39dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@android:drawable/ic_menu_edit" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/timerFields"
+                android:layout_width="390dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/edit_text_background"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/timerTypeLogo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:backgroundTint="#737272"
+                    app:srcCompat="@mipmap/timer1" />
+
+<!--                <LinearLayout-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/timerEditId"
+                        android:layout_width="281dp"
+                        android:layout_height="56dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Start Timer"
+                        android:inputType="text"
+                        android:textColorHint="#FF2E2E2E" />
+
+                    <Button
+                        android:id="@+id/timerDp"
+                        android:layout_width="27dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/custom_dropdown_icon"
+                        android:gravity="clip_horizontal"
+                        android:onClick="timerDp"
+                        android:translationY="-10dp" />
+
+                </LinearLayout>
+                <!--            android:background="@null"-->
+                <ImageView
+                    android:id="@+id/brush4"
+                    android:layout_width="35dp"
+                    android:layout_height="39dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@android:drawable/ic_menu_edit" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/startDateFields"
+                android:layout_width="390dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/edit_text_background"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/startDateTypeLogo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:background="@mipmap/dates"
+                    android:backgroundTint="#737272" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/startEditId"
+                        android:layout_width="277dp"
+                        android:layout_height="56dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Start Date"
+                        android:inputType="text"
+                        android:textColorHint="#FF2E2E2E" />
+
+                    <Button
+                        android:id="@+id/sdateDp"
+                        android:layout_width="27dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/custom_dropdown_icon"
+                        android:gravity="clip_horizontal"
+                        android:onClick="sartDate"
+                        android:translationY="-10dp" />
+
+                </LinearLayout>
+                <!--            android:background="@null"-->
+
+                    <ImageView
+                    android:id="@+id/brush5"
+                    android:layout_width="35dp"
+                    android:layout_height="39dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@android:drawable/ic_menu_edit" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/endDateFields"
+                android:layout_width="390dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/edit_text_background"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/endDateTypeLogo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:background="@mipmap/dates"
+                    android:backgroundTint="#737272" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/endDateEditId"
+                        android:layout_width="273dp"
+                        android:layout_height="56dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="End Date"
+                        android:inputType="text"
+                        android:textColorHint="#FF2E2E2E" />
+
+                    <Button
+                        android:id="@+id/eDateDp"
+                        android:layout_width="27dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/custom_dropdown_icon"
+                        android:gravity="clip_horizontal"
+                        android:onClick="endDate"
+                        android:translationY="-10dp" />
+
+                </LinearLayout>
+                <!--            android:background="@null"-->
+                <ImageView
+                    android:id="@+id/brush6"
+                    android:layout_width="35dp"
+                    android:layout_height="39dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@android:drawable/ic_menu_edit" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/prioritylayout"
+            android:layout_width="386dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edit_text_background"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="2dp"
+            tools:layout_editor_absoluteY="51dp">
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Priority"
+                android:textSize="18sp"
+                android:translationY="7dp" />
+
+            <LinearLayout
+                android:id="@+id/radioGroup"
+                android:layout_width="404dp"
+                android:layout_height="49dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="119dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="HIGH"
+                    android:transformPivotX="30dp"
+                    android:translationY="-1dp" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="MEDIUM" />
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="LOW" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/updateSave"
+            android:layout_width="match_parent"
+
+            android:layout_height="63dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="63dp"
+            android:text="Save" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

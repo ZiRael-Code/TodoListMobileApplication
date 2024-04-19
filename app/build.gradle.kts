@@ -73,6 +73,7 @@ dependencies {
     implementation(libs.logging.interceptor)
     implementation(libs.gson)
     implementation(libs.retrofit)
+    implementation(libs.legacy.support.v4)
     // retrofit end
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

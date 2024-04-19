@@ -21,4 +21,10 @@ public interface ApiService {
 
         @GET("/user/todayTasks/{id}")
         Call<JsonObject> sendGetTodayTask(@Path("id") int id);
+
+        @GET("/user/getTaskByDate/{date}/{userId}")
+         Call<JsonObject> sendGetTaskByDate(@Path("date")String date, @Path("userId") int userId);
+
+        @POST("/user/addTask")
+        Call<JsonObject>  sendAddTaskReq(@Body RequestBody requestBody);
 }

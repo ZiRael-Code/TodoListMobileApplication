@@ -98,4 +98,29 @@ public ApiService returnApiService(){
         return apiService;
 }
 
+
+    public void addTask(Context context, RequestBody requestBody, JsonObject response){
+//       Call<JsonObject> callback =  apiService.sendAddTaskReq(requestBody);
+//       callback.enqueue(new Callback<JsonObject>() {
+//           @Override
+//           public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+//               if (response.isSuccessful()){
+//                   JsonObject responseBody = response.body();
+//                   String message = responseBody.get("message").getAsString();
+//                   if (message != null){
+//                       nextScreen(context, DashBooardActivity.class, responseBody);
+//                   }else {
+//                       Toast.makeText(context, "Body is null ", Toast.LENGTH_SHORT).show();
+//                   }
+//               }else {
+//                   Toast.makeText(context, "not successful "+response.code(), Toast.LENGTH_SHORT).show();
+//               }
+//           }
+//
+//           @Override
+//           public void onFailure(Call<JsonObject> call, Throwable throwable) {
+//
+//           }
+//       });
+    }
 }
