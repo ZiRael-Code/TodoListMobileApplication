@@ -44,8 +44,8 @@ public class BottomNavigationClickListener implements View.OnClickListener {
     public Intent intentGetter(Class<?> thisContext) {
         DashBooardActivity booardActivity = new DashBooardActivity();
         Intent intent = new Intent(context, thisContext);
-        intent.putExtra("jsonResponse", booardActivity.getJsonObject());
-        intent.putStringArrayListExtra("projectGroups",booardActivity.getTasGroup());
+        intent.putExtra("jsonResponse", booardActivity.jsonObj);
+//        intent.putStringArrayListExtra("projectGroups",booardActivity.getTasGroup());
 
 //        Intent getIntent = new Intent(context, thisContext);
 //        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {

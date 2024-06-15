@@ -6,4 +6,7 @@
     <item name="projectTypeImg" type="id" />
     <item name="individualProgressVerti" type="id" />
     <item name="projectName" type="id" />
+    <item name="inProg" type="id" />
+    <item name="individualTaskframeLayout" type="id" />
+    <item name="linearLayout7" type="id" />
 </resources>

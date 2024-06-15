@@ -44,7 +44,7 @@ public class SignUpActivity1 extends AppCompatActivity {
             jsonObject.addProperty("email", email.getText().toString());
             jsonObject.addProperty("password", password.getText().toString());
             RequestBody requestBody = RequestBody.create(jsonObject.toString(), MediaType.parse("application/json"));
-            apiClient.makePostRequest(requestBody, textView, SignUpActivity1.this);
+            apiClient.registerReq(requestBody, textView, SignUpActivity1.this);
         });
 
     }

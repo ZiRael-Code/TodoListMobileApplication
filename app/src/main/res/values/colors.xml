@@ -40,4 +40,8 @@
     <color name="c9">#9ba6ff</color>
     <color name="c9spar">#C4CAFD</color>
 
+    <color name="dateClicked">#5f33e1</color>
+    <color name="inProg">#ede8ff</color>
+    <color name="inProgText">#5f33e1</color>
+
 </resources>

@@ -16,38 +16,40 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_marginTop="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
-    <Button
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:width="0dp"
-        android:background="@drawable/arrow"
-        app:iconSize="38dp"
-        android:layout_marginLeft="12dp"/>
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="12dp"
+                android:width="0dp"
+                android:background="@drawable/arrow"
+                app:iconSize="38dp" />
 
-    <TextView
-        android:layout_width="233dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="Add Task"
-        android:textColor="@color/black"
-        android:textSize="35sp" />
+            <TextView
+                android:layout_width="233dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Add Task"
+                android:textColor="@color/black"
+                android:textSize="35sp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:width="0dp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="0dp" />
 
-    </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -100,7 +102,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-<!--start-->
+            <!--start-->
             <LinearLayout
                 android:id="@+id/taskNameFields"
                 android:layout_width="390dp"
@@ -123,6 +125,7 @@
                     android:layout_width="294dp"
                     android:layout_height="49dp"
                     android:orientation="vertical">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -172,7 +175,7 @@
                     android:background="@android:drawable/ic_menu_edit"
                     android:translationX="10dp" />
             </LinearLayout>
-<!--            end-->
+            <!--            end-->
 
 
             <LinearLayout
@@ -217,7 +220,7 @@
                     android:layout_marginRight="10dp"
                     android:background="@android:drawable/ic_menu_edit" />
             </LinearLayout>
-<!--            end 2-->
+            <!--            end 2-->
 
             <LinearLayout
                 android:id="@+id/descriptionFields"
@@ -271,10 +274,10 @@
                     android:backgroundTint="#737272"
                     app:srcCompat="@mipmap/timer1" />
 
-<!--                <LinearLayout-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:orientation="horizontal">-->
+                <!--                <LinearLayout-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:orientation="horizontal">-->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -353,7 +356,7 @@
                 </LinearLayout>
                 <!--            android:background="@null"-->
 
-                    <ImageView
+                <ImageView
                     android:id="@+id/brush5"
                     android:layout_width="35dp"
                     android:layout_height="39dp"
@@ -411,7 +414,6 @@
                     android:layout_marginRight="10dp"
                     android:background="@android:drawable/ic_menu_edit" />
             </LinearLayout>
-
 
 
         </LinearLayout>

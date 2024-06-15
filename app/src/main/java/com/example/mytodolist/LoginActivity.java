@@ -40,11 +40,10 @@ public class LoginActivity extends AppCompatActivity {
         jsonObject.addProperty("password",password.getText().toString());
 
         RequestBody requestBody = FormBody.create(jsonObject.toString(), MediaType.parse("application/json"));
-        apiClient.makelLoginRequest(requestBody, LoginActivity.this, bodyView);
+        apiClient.makeLoginRequest(requestBody, LoginActivity.this, bodyView);
         progressBar.setVisibility(View.VISIBLE);
-//        Thread.sleep(1500);
-        finish();
 
+        finish();
     }
 
     public void dontHaveAcc(View view){

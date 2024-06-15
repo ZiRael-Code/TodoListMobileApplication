@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mytodolist.ChatConnect.ApiClient;
 import com.google.gson.JsonObject;
@@ -24,6 +25,7 @@ import com.google.gson.JsonObject;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -45,7 +47,7 @@ public class AddTask extends AppCompatActivity {
     EditText endDate;
     //                EditText priority =  findViewById(R.id.endDateEditId);
     EditText startHour;
-
+    RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +60,27 @@ public class AddTask extends AppCompatActivity {
         startDate =  findViewById(R.id.startEditId);
         endDate =  findViewById(R.id.endDateEditId);
         startHour =  findViewById(R.id.timerEditId);
+
+//        recyclerView = findViewById(R.id.dateRecyler);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+
+        LocalDate today = LocalDate.now();
+        LocalDate startDate = today.minusYears(5);
+        List<String> month = new ArrayList<>();
+        List<String> year = new ArrayList<>();
+        List<String> day = new ArrayList<>();
+        List<List<String>> cover = List.of(month, year, day);
+
+            while (!startDate.isAfter(today)) {
+                month.add(String.valueOf(startDate.getDayOfWeek()));
+                year.add(String.valueOf(startDate.getYear()));
+                day.add(String.valueOf(startDate.getDayOfWeek()));
+
+                startDate = startDate.plusDays(1);
+            }
+
+        }
+
 
         String itemToUpdate = getIntent().getStringExtra("updateItem");
         String jsonResponseString = getIntent().getStringExtra("jsonResponse");

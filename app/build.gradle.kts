@@ -67,6 +67,7 @@ dependencies {
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
     implementation(libs.kotlin.reflect)
+
 //    retrofit start
     implementation(libs.converter.moshi)
     implementation(libs.converter.gson)
@@ -74,6 +75,7 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.retrofit)
     implementation(libs.legacy.support.v4)
+//    implementation(libs.play.services.ads)
     // retrofit end
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
@@ -82,4 +84,10 @@ dependencies {
     androidTestImplementation(libs.ui.test.junit4)
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
+    implementation(libs.jackson.databind)
+    implementation(libs.jackson.datatype.jsr310)
+    implementation(libs.jackson.module.kotlin)
+    implementation(libs.converter.jackson)
+    implementation(libs.jackson.datatype.jsr310.v2123)
+
 }
