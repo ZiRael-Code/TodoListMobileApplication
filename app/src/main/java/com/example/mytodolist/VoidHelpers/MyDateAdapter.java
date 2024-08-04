@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mytodolist.MyModel.ToDoItem;
 import com.example.mytodolist.R;
 
 import java.time.LocalDate;
@@ -22,6 +23,7 @@ public class MyDateAdapter extends RecyclerView.Adapter<MyDateAdapter.ViewHolder
     public MyDateAdapter(List<LocalDate> dates) {
         this.dates = dates;
         itemViewList = new ArrayList<>();
+
     }
 
     @NonNull
@@ -41,6 +43,15 @@ public class MyDateAdapter extends RecyclerView.Adapter<MyDateAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         LocalDate currentDate = dates.get(position);
         holder.bind(currentDate);
+        if (position == dates.size() - 1) {
+            holder.itemView.post(new Runnable() {
+                @Override
+                public void run() {
+                    // Perform the click operation on the last item
+                    holder.itemView.performClick();
+                }
+            });
+        }
     }
 
     @Override
@@ -57,9 +68,11 @@ public class MyDateAdapter extends RecyclerView.Adapter<MyDateAdapter.ViewHolder
         private TextView month;
         private TextView date;
         private TextView day;
+        private View dateEach;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            dateEach = itemView;
             month = itemView.findViewById(R.id.month);
             date = itemView.findViewById(R.id.date);
             day = itemView.findViewById(R.id.day);
@@ -71,8 +84,14 @@ public class MyDateAdapter extends RecyclerView.Adapter<MyDateAdapter.ViewHolder
                 date.setText(String.valueOf(currentDate.getDayOfMonth()));
                 day.setText(sentenceCase(currentDate.getDayOfWeek().toString()));
                 itemViewList.add(itemView);
+
+                dateEach.setOnClickListener(x->{
+
+                });
+
             }
         }
+
         String sentenceCase(String s){
             String remains = "";
             for (int i = 1; i < s.length(); i++) {

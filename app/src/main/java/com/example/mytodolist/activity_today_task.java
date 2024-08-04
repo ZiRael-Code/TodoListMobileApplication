@@ -45,63 +45,22 @@ public class activity_today_task extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_today_task);
 
-        
-//        String allTask = getIntent().getStringExtra("");
-//        setDateScroller();
-//
-//        try {
-//            allTasks = new JSONArray(allTask);
-//
-//            String jsonObj = getIntent().getStringExtra("jsonResponse");
-//            JSONObject jsonObject = new JSONObject(jsonObj);
-//            int id = Integer.parseInt(jsonObject.getString("id"));
-//            //observe this algorithm if it can be used to skip onclick
-//            View allByDef = findViewById(R.id.all);
-//            all(allByDef);
-////            all.setOnClickListener(x -> {
-////                try {
-////                    allTask();
-////                } catch (JSONException e) {
-////                    throw new RuntimeException(e);
-////                }
-////            });
-//        } catch (JSONException e) {
-//            throw new RuntimeException(e);
-//        }
-
 
         RecyclerView recyclerView = findViewById(R.id.dateScroll);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.HORIZONTAL);
         recyclerView.setLayoutManager(layoutManager);
-
         List<LocalDate> dateList = generateDateList();
-
         MyDateAdapter adapter = new MyDateAdapter(dateList);
         recyclerView.setAdapter(adapter);
 
 
-        LinearLayoutManager layoutManager1 = (LinearLayoutManager) recyclerView.getLayoutManager();
-       int firstPos =  layoutManager1.findFirstVisibleItemPosition();
-       int lastPos =  layoutManager1.findLastVisibleItemPosition();
-        System.out.println("First position: "+firstPos+"Last Pos: "+lastPos);
-       int myPos = 1;
-       if (myPos >= firstPos && myPos <= lastPos) {
-           View view = layoutManager1.findViewByPosition(lastPos);
-           if (view != null) {
-               view.performClick();
-           } else System.out.println("It a null");
-       }else {
-           recyclerView.scrollToPosition(firstPos);
-       }
 
 
         menu();
-        LinearLayout layout = findViewById(R.id.navagationIdCom);
-        View child = layout.getChildAt(0);
-        child.performClick();
-
-
+//        LinearLayout layout = findViewById(R.id.navagationIdCom);
+//        View child = layout.getChildAt(0);
+//        child.performClick();
 
     }
 
@@ -120,8 +79,9 @@ public class activity_today_task extends AppCompatActivity {
                     }
                     x.setBackgroundTintList(colour);
                     ((TextView)x).setTextColor(ContextCompat.getColor(this, R.color.white));
-
                 }
+
+
             });
         }
     }
@@ -181,7 +141,12 @@ public class activity_today_task extends AppCompatActivity {
 //        }
     }
 
+    void recycle(){
+        
+    }
+
     public void all(View view) {
+
 
 //        try {
 //            LinearLayout containningAll = findViewById(R.id.containningAll);

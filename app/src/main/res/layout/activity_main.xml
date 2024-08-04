@@ -45,12 +45,15 @@
 
     <Button
         android:id="@+id/loginPage"
-        android:layout_width="230dp"
+        android:layout_width="wrap_content"
         android:layout_height="60dp"
+        android:paddingLeft="70dp"
+        android:paddingRight="70dp"
         android:layout_marginTop="36dp"
-        android:backgroundTint="#5f33e1"
-        android:onClick="loginPages"
-        android:text="LoginPage"
+        android:backgroundTint="#9260f4"
+        android:onClick="getStarted"
+        android:text="Get Started"
+        android:background="@drawable/get_started_button"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -59,26 +62,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11"
         app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/signUpPage"
-        android:layout_width="230dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginBottom="256dp"
-        android:backgroundTint="@android:color/holo_blue_bright"
-        android:hapticFeedbackEnabled="false"
-        android:onClick="signUpPages"
-        android:text="SignUp"
-        android:textColor="#FFFFFF"
-        android:textColorLink="#FFFFFF"
-        android:textSize="30sp"
-        app:cornerRadius="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginPage" />
 
     <!--    </LinearLayout>-->
 </androidx.constraintlayout.widget.ConstraintLayout>

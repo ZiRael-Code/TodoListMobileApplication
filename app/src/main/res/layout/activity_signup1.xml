@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/signup"
-    tools:context=".SignUpActivity1">
+    tools:context=".SignUpActivity">
 
 <!--    <LinearLayout-->
 <!--        android:layout_width="399dp"-->
@@ -69,20 +69,21 @@
 
         <TextView
             android:id="@+id/emaiFieldIdenti"
-            android:layout_width="282dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:text="Email"
             android:textColor="#000000"
-            android:textStyle="normal" />
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/emailEdit"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:padding="8dp"
+            android:ems="15"
             android:background="@drawable/edit_text_background"
-            android:ems="10"
             android:inputType="textEmailAddress"
             android:textColor="#000000" />
     </LinearLayout>
@@ -101,58 +102,76 @@
 
         <TextView
             android:id="@+id/usernameFieldIdenti"
-            android:layout_width="282dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:text="Username"
             android:textColor="#000000"
-            android:textStyle="normal" />
+            android:textStyle="bold"
+            />
 
         <EditText
             android:id="@+id/UsernameEdit"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:ems="15"
+            android:padding="8dp"
             android:background="@drawable/edit_text_background"
-            android:ems="10"
-            android:inputType="textEmailAddress"
+            android:inputType="text|textWebEditText"
             android:textColor="#000000" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/passwordCont"
-        android:layout_width="297dp"
-        android:layout_height="68dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailCont">
 
-        <TextView
-            android:id="@+id/passwordFieldIdenti"
-            android:layout_width="282dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:text="Password"
-            android:textColor="#000000"
-            android:textStyle="normal" />
+            android:orientation="horizontal"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@+id/passwordFieldIdenti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="Password"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="showPassword"
+                android:text="show"
+                android:textColor="@color/black"
+                android:textAlignment="textEnd" />
+        </LinearLayout>
 
         <EditText
             android:id="@+id/PasswordEdit"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:padding="8dp"
+            android:ems="15"
             android:background="@drawable/edit_text_background"
-            android:ems="10"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             android:textColor="#000000" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="289dp"
-        android:layout_height="100px"
+        android:layout_width="281dp"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -184,11 +203,16 @@
         android:id="@+id/submit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
+        android:layout_marginEnd="52dp"
+        android:background="@drawable/get_started_button"
+        android:backgroundTint="#9260f4"
         android:text="SignUp"
+        android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.211" />
 
     <TextView
         android:id="@+id/error"
@@ -252,7 +276,7 @@
             android:layout_height="45dp"
             android:layout_weight="1"
             android:translationX="70dp"
-            tools:srcCompat="@drawable/facebook" />
+            tools:src="@drawable/facebook" />
 
         <ImageView
             android:id="@+id/imageView4"
@@ -267,5 +291,6 @@
             android:layout_weight="1"
             android:translationX="-70dp" />
     </LinearLayout>
+
     <!--    </LinearLayout>-->
 </androidx.constraintlayout.widget.ConstraintLayout>

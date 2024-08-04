@@ -1,6 +1,8 @@
 package com.example.mytodolist;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,6 +17,7 @@ import com.example.mytodolist.ChatConnect.ApiService;
 import com.example.mytodolist.MyModel.DashboardResponse.Dashboard;
 import com.example.mytodolist.MyModel.ToDoItem;
 import com.example.mytodolist.VoidHelpers.ColourDetermine;
+import com.example.mytodolist.VoidHelpers.ContextDetermine;
 import com.example.mytodolist.VoidHelpers.ProjectCustomAdapter;
 import com.example.mytodolist.VoidHelpers.TodayItemCustomAdapter;
 
@@ -80,12 +83,13 @@ protected void onCreate(Bundle savedInstanceState) {
                     todayTask = dashboard.getTodayItem();
 
                     TextView topTotalComplete = findViewById(R.id.messageProgressPercentage);
-                    topTotalComplete.setText(String.valueOf(dashboard.getTotalCompleted()));
+                    topTotalComplete.setText(String.valueOf(dashboard.getTotalCompleted()) +"%");
 
                     RecyclerView inProgressRecyclerView = findViewById(R.id.recyclerView);
                     LinearLayoutManager layoutManager = new LinearLayoutManager(DashBooardActivity.this);
                     layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
                     inProgressRecyclerView.setLayoutManager(layoutManager);
+
                     if (todayTask.isEmpty()){
                         ToDoItem toDoItem = new ToDoItem();
                         toDoItem.setTaskType("NO PROGRESS");
@@ -96,7 +100,8 @@ protected void onCreate(Bundle savedInstanceState) {
                     }
                     TodayItemCustomAdapter customAdapter = new TodayItemCustomAdapter(todayTask);
                     inProgressRecyclerView.setAdapter(customAdapter);
-
+                    TextView inProjSize = findViewById(R.id.inProjSize);
+                    inProjSize.setText(String.valueOf(todayTask.size()));
 
                     List<HashMap<String, String>> all = arrangedItems;
                     RecyclerView  projectGroupRecyclerView  = findViewById(R.id.taskGroup1);
@@ -105,14 +110,15 @@ protected void onCreate(Bundle savedInstanceState) {
                     projectGroupRecyclerView.setLayoutManager(layoutManager1);
                     ProjectCustomAdapter projectCustomAdapter = new ProjectCustomAdapter(all);
                     projectGroupRecyclerView.setAdapter(projectCustomAdapter);
-
+                    TextView projectSize = findViewById(R.id.taskGroupSize);
+                    projectSize.setText(String.valueOf(all.size()));
                     System.out.println(todayTask);
                 } else {
                     System.out.println("body null oo");
                     Toast.makeText(DashBooardActivity.this, "body null oo", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                System.out.println("_____\nit is not successfull ooo --> "+response.raw()+""+response.body());
+                System.out.println("________\nit is not successfully ooo --> "+response.raw()+""+response.body());
                 Toast.makeText(DashBooardActivity.this, "response.body()", Toast.LENGTH_SHORT).show();
             }
                 }
@@ -125,63 +131,23 @@ protected void onCreate(Bundle savedInstanceState) {
         } catch (JSONException e) {
             Toast.makeText(this, "Error " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
-//        ToDoItem toDoItem = new ToDoItem();
-//        toDoItem.setTaskName("Testing");
-//        toDoItem.setStartTimer("6:00 pm");
-//        toDoItem.setEndTimer("6:09 pm");
-//        toDoItem.setTaskType("SLEEPING SCHEDULE");
-//
-//        ToDoItem toDoItem1 = new ToDoItem();
-//        toDoItem1.setTaskName("Another");
-//        toDoItem1.setStartTimer("5:55 pm");
-//        toDoItem1.setEndTimer("5:58 pm");
-//        toDoItem1.setTaskType("DAILY TASK");
-//
-//        List<ToDoItem> toDoItems = new ArrayList<>();
-//        toDoItems.add(toDoItem);
-//        toDoItems.add(toDoItem1);
-//
-//        RecyclerView inProgressRecyclerView = findViewById(R.id.recyclerView);
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-//        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-//        inProgressRecyclerView.setLayoutManager(layoutManager);
-//
-//        TodayItemCustomAdapter customAdapter = new TodayItemCustomAdapter(toDoItems);
-//        inProgressRecyclerView.setAdapter(customAdapter);
-
-        //
-//        List<List<ToDoItem>> all = List.of(List.of(toDoItem), List.of(toDoItem1));
-//        List<HashMap<String, String>> hashMapList = getListHashmap(all);
-//
-//        RecyclerView  projectGroupRecyclerView  = findViewById(R.id.taskGroup1);
-//        LinearLayoutManager layoutManager1 = new LinearLayoutManager(this);
-//        layoutManager1.setOrientation(LinearLayoutManager.VERTICAL);
-//        projectGroupRecyclerView.setLayoutManager(layoutManager1);
-//
-//        ProjectCustomAdapter projectCustomAdapter = new ProjectCustomAdapter(hashMapList);
-//        projectGroupRecyclerView.setAdapter(projectCustomAdapter);
-
     }
 
 
-//
-//public void nextScreen(View view){
-//    ContextDetermine contextDetermine = new ContextDetermine();
-//    Class<?> context = contextDetermine.nextScreenDeterminator(view);
-//    assert context != null;
-//
-//    Intent intent = new Intent(this, context);
-//
-//    intent.putExtra("jsonResponse", jsonObj);
-//    intent.putStringArrayListExtra("projectGroups", taskType);
-//    String ids = String.valueOf(id);
-//    intent.putExtra("id", ids);
-//    intent.putExtra("itemsArray", taskArray);
-//
-//
-//            this.startActivity(intent);
-//    finish();
-//}
+
+public void nextScreen(View view){
+    ContextDetermine contextDetermine = new ContextDetermine();
+    Class<?> context = contextDetermine.nextScreenDeterminator(view);
+    assert context != null;
+    Intent intent = new Intent(this, context);
+    intent.putExtra("jsonResponse", jsonObj);
+    intent.putStringArrayListExtra("projectGroups", taskType);
+    String ids = String.valueOf(id);
+    intent.putExtra("id", ids);
+    intent.putExtra("itemsArray", taskArray);
+    this.startActivity(intent);
+    finish();
+}
 //
 //private void projectGroup(JSONArray itemsArray) throws JSONException {
 //    int currentProg = 0;

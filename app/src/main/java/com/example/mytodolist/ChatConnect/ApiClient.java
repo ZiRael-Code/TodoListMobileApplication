@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.mytodolist.AppMain;
 import com.example.mytodolist.DashBooardActivity;
 import com.example.mytodolist.LoginActivity;
 import com.example.mytodolist.MyModel.User;
@@ -16,9 +17,13 @@ import com.example.mytodolist.R;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.HashMap;
 
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -90,40 +95,39 @@ public class ApiClient {
     }
 
 
-    public void makeLoginRequest(RequestBody requestBody, Context context, TextView bodyView) {
-        Call<JsonObject> getCall = apiService.sendLoginReq(requestBody);
-        getCall.enqueue(new Callback<>() {
-            @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                if (response.isSuccessful()) {
-                    if (response.body() != null) {
-                        JsonObject responseBody = response.body();
-                        String message = responseBody.get("message").getAsString();
-//                        bodyView.setText(responseBody.get("username").getAsString());
-                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-                        SharedPreferences sharedPreferences = context.
-                                getSharedPreferences(LOCAL_STORAGE, Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putBoolean("loginStatus", true);
-                        editor.putString("jsonResponse",responseBody.toString());
-                        editor.apply();
-                        nextScreen(context, DashBooardActivity.class, responseBody);
-                    } else {
-                        Toast.makeText(context, "Body is null ", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(context, "not successful ", Toast.LENGTH_SHORT).show();
-                    System.out.println(response.message());
-                    System.out.println(response.body());
-                }
-            }
+//    public void makeLoginRequest(RequestBody requestBody, Context context, TextView bodyView) {
+//        Call<JsonObject> getCall = apiService.sendLoginReq(requestBody);
+//        getCall.enqueue(new Callback<>() {
+//            @Override
+//            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+//                if (response.isSuccessful()) {
+//                    if (response.body() != null) {
+//                        Gson gson = new Gson();
+//                        Type type = new TypeToken<HashMap<String, String>>() {}.getType();
+//                        HashMap<String, String> user = gson.fromJson(userStr, type);
+//                        user.replace("isLoggedIn", String.valueOf(true));
+//                        editor.putString("user", gson.toJson(user));
+//                        editor.apply();
+//                        Intent intent = new Intent(this, AppMain.class);
+//                        intent.putExtra("user", gson.toJson(user));
+//                        startActivity(intent);
+//
+//                    } else {
+//                        Toast.makeText(context, "Body is null ", Toast.LENGTH_SHORT).show();
+//                    }
+//                } else {
+//                    Toast.makeText(context, "not successful ", Toast.LENGTH_SHORT).show();
+//                    System.out.println(response.message());
+//                    System.out.println(response.body());
+//                }
+//            }
 
-            @Override
-            public void onFailure(Call<JsonObject> call, Throwable t) {
-                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+//            @Override
+//            public void onFailure(Call<JsonObject> call, Throwable t) {
+//                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
 
     public ApiService returnApiService() {
         return apiService;

@@ -44,4 +44,9 @@
     <color name="inProg">#ede8ff</color>
     <color name="inProgText">#5f33e1</color>
 
+
+    <color name="custom_button_colour">#5f33e1</color>
+    <color name="custom_button_text_colour">#FFFFFF</color>
+
+
 </resources>

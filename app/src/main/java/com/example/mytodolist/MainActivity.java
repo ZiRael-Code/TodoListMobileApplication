@@ -7,46 +7,48 @@ import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.mytodolist.ChatConnect.ApiClient;
-import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-   private Button login;
-    private Button signUp;
+   private Button getStarted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SharedPreferences sharedPreferences = getSharedPreferences(ApiClient.LOCAL_STORAGE, MODE_PRIVATE);
-        String id = sharedPreferences.getString("jsonResponse", null);
-        boolean loginStatus = sharedPreferences.getBoolean("loginStatus", false);
-            if (loginStatus) {
-                Intent intent = new Intent(this, DashBooardActivity.class);
-                intent.putExtra("jsonResponse", id);
-                startActivity(intent);
-                finish();
+        SharedPreferences sp = getSharedPreferences("userLoginStatus", MODE_PRIVATE);
+        String userStr = sp.getString("user", null);
+        Gson gson = new Gson();
+        Intent intent;
+        if (userStr != null) {
+            Type type = new TypeToken<HashMap<String, String>>() {
+            }.getType();
+            HashMap<String, String> user = gson.fromJson(userStr, type);
+            boolean logged = Boolean.getBoolean(Objects.requireNonNull(user.get("isLoggedIn")));
+            if (logged) {
+                intent = new Intent(this, AppMain.class);
+                intent.putExtra("user", userStr);
             } else {
-                login = findViewById(R.id.loginPage);
-                signUp = findViewById(R.id.signUpPage);
+                intent = new Intent(this, LoginActivity.class);
             }
+            startActivity(intent);
+        }else {
+            System.out.println("______________________\nthere a problem with user str");
+
         }
-
-
-    public void loginPages(View view){
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(intent);
     }
 
-    public void signUpPages(View view){
-        Intent intent = new Intent(MainActivity.this, SignUpActivity1.class);
+
+    public void getStarted(View view){
+        Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
         startActivity(intent);
     }
-
 
 
 
