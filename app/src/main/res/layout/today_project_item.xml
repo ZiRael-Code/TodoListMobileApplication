@@ -22,14 +22,16 @@
 
         <LinearLayout
             android:id="@+id/frameLayout"
-            android:layout_width="35dp"
-            android:layout_height="32dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
             android:layout_marginRight="15dp"
             android:background="@drawable/circularg_logo"
             android:backgroundTint="#CC1717"
             android:backgroundTintMode="src_over"
-            android:gravity="center"
-            android:translationX="8dp">
+            android:gravity="center">
 
             <ImageView
                 android:id="@+id/iconView"
@@ -119,13 +121,13 @@
 
     <LinearLayout
         android:id="@+id/individualTaskLayout"
-        android:layout_width="226dp"
-        android:layout_height="116dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginRight="15dp"
         android:background="@drawable/dashboard"
         android:backgroundTint="#E49E9E"
+        android:padding="13dp"
         android:orientation="vertical"
-        android:translationX="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.185"
@@ -138,63 +140,64 @@
         <!-- Ensure the content width exceeds the width of the HorizontalScrollView for scrolling to work -->
 
         <!-- Example child view -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <TextView
             android:id="@+id/projectType1"
-            android:layout_width="154dp"
-            android:layout_height="31dp"
-            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="No Project"
-            android:textColor="#373636"
-            android:textSize="15sp"
-            android:translationY="5dp" />
+            android:textColor="#5E5D5D"
+            android:textSize="15sp" />
+<Space
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"/>
+            <LinearLayout
+                android:id="@+id/individualTaskframeLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:layout_gravity="end"
+                android:background="@drawable/circularg_logo"
+                android:gravity="center_horizontal|center_vertical">
 
+                <ImageView
+                    android:id="@+id/projectTypeImg"
+                    android:layout_width="25dp"
+                    android:layout_height="23dp"
+                    android:forceHasOverlappingRendering="true"
+                    tools:srcCompat="@mipmap/brief" />
+            </LinearLayout>
+        </LinearLayout>
 
         <!--                            <LinearLayout-->
         <!--                                android:layout_width=""-->
         <!--                                android:layout_height="">-->
-        <LinearLayout
-            android:id="@+id/individualTaskframeLayout"
-            android:layout_width="35dp"
-            android:layout_height="33dp"
-            android:layout_gravity="end"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/circularg_logo"
-            android:gravity="center_horizontal|center_vertical"
-            android:translationY="-37dp">
 
-            <ImageView
-                android:id="@+id/projectTypeImg"
-                android:layout_width="25dp"
-                android:layout_height="23dp"
-                android:forceHasOverlappingRendering="true"
-                tools:srcCompat="@mipmap/brief" />
-        </LinearLayout>
 
         <TextView
             android:id="@+id/projectName"
-            android:layout_width="252dp"
-            android:layout_height="41dp"
-            android:layout_marginTop="-30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="No Task"
+            android:layout_marginBottom="10dp"
             android:textColor="#000000"
             android:textSize="24sp"
-            android:textStyle="bold"
-            android:translationX="17dp" />
+            android:textStyle="bold" />
 
         <ProgressBar
             android:id="@+id/individualProgressVerti"
             style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="189dp"
-            android:layout_height="9dp"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginHorizontal="50dp"
-            android:layout_marginBottom="16dp"
+            android:layout_width="206dp"
+            android:layout_height="7dp"
+            android:layout_gravity="center_horizontal"
             android:backgroundTint="@color/white"
             android:indeterminate="false"
             android:max="100"
-
             android:progress="0"
             android:progressBackgroundTint="#FFFFFF"
             android:progressTint="#FF1818" />
