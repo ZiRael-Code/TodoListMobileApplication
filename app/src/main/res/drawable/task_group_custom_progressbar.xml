@@ -1,0 +1,25 @@
+<!-- custom_progress_bar.xml -->
+<rotate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fromDegrees="0"
+    android:toDegrees="360"
+    android:pivotX="50%"
+    android:pivotY="50%" >
+
+    <shape
+        android:shape="ring"
+        android:innerRadiusRatio="3"
+        android:thicknessRatio="6"
+        android:useLevel="false"
+        android:thickness="4dp" >
+
+        <size
+            android:width="40dp"
+            android:height="40dp" />
+
+        <gradient
+            android:type="sweep"
+            android:useLevel="false"
+            android:startColor="#865FFA"
+            android:endColor="#865FFA" />
+    </shape>
+</rotate>

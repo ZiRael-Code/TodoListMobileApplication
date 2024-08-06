@@ -36,7 +36,7 @@ public class Dashboard {
 
     @Override
     public String toString() {
-        return "Dashboard{" +
+        return "DashboardFragment{" +
                 "arrangedItems=" + arrangedItems +
                 ", todayItem=" + todayItem +
                 '}';
